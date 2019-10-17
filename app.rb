@@ -1,6 +1,5 @@
 require 'bundler'
 Bundler.require
-require 'pry'
 
 $:.unshift File.expand_path("./../lib", __FILE__)
 
@@ -25,6 +24,5 @@ game = Application.new(player1,player2)
 game.perform
 
 
-binding.pry
 
 

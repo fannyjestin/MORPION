@@ -15,19 +15,22 @@ class Application
   @game_board.print_case
     t = 0
 
-    while t <=10 || victory?.nil
+    while !@game_board.is_over?
     puts "Choisis une case #{@player1.name}"
     input_1 = gets.chomp.to_s
     process(input_1)
+    break if @game_board.is_over?
     puts "Choisis une case #{@player2.name}" 
     input_2 = gets.chomp.to_s
     process(input_2)
-    t +=2
     end
+
+    puts "#{player1.name} a gagné ! youhouuuuuu" if @game_board.victory? == 1 
+    puts "#{player2.name} a gagné ! youhouuuuuu" if @game_board.victory? == 2
+    puts "MATCHHHH NUUUUL !!! " if @game_board.victory? == nil
+    puts "BYE BYYEEE LOVE GUYS "
+
   end 
-
-
-
 
 
 

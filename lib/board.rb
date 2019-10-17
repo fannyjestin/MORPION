@@ -16,11 +16,13 @@ class Board
 
 
   def print_case
+      puts "  1   2   3" 
     for n in 0..2 do 
+      print (65+n).chr + " "
       @case_array[n][0].print_case
-      print "|"
+      print " | "
       @case_array[n][1].print_case
-      print "|"
+      print " | "
       @case_array[n][2].print_case 
       puts
     end 
@@ -57,35 +59,36 @@ class Board
       for n in 0..2 do
         #condition si victore avec par rangée
       if @case_array[n][0].value_case == @case_array[n][1].value_case && @case_array[n][2].value_case == @case_array[n][1].value_case
-        if @case_array[0][0].value_case  == 1
+        if @case_array[n][0].value_case  == 1
           return 1
-        elsif @case_array[0][0].value_case == 2
+        elsif @case_array[n][0].value_case == 2
           return 2
         end
       end
         #condition si victore avec par colonne
-      if @case_array[1][n].value_case == @case_array[2][n].value_case && @case_array[1][n].value_case == @case_array[3][n].value_case
-        if @case_array[1][0].value_case  == 1
+      if @case_array[1][n].value_case == @case_array[2][n].value_case && @case_array[0][n].value_case == @case_array[2][n].value_case
+        if @case_array[0][n].value_case  == 1
           return 1
-        elsif @case_array[1][0].value_case ==2
+        elsif @case_array[0][n].value_case ==2
           return 2
         end
       end
+    end
 
         #condition si victore avec par diagonal
-      if @case_array[0][0].value_case == @case_array[1][1].value_case && @case_array[3][3].value_case == @case_array[1][1].value_case
+      if @case_array[0][0].value_case == @case_array[1][1].value_case && @case_array[2][2].value_case == @case_array[1][1].value_case
         if @case_array[0][0].value_case  == 1
           return 1
-        elsif @case_array[2][0].value_case ==2
+        elsif @case_array[0][0].value_case ==2
           return 2
         end
       end
 
 #condition si victore avec par diagonal
-      if @case_array[0][2].value_case == @case_array[1][1].value_case && @case_array[3][0].value_case == @case_array[1][1].value_case
-        if @case_array[0][0].value_case  == 1
+      if @case_array[0][2].value_case == @case_array[1][1].value_case && @case_array[2][0].value_case == @case_array[1][1].value_case
+        if @case_array[0][2].value_case  == 1
           return 1
-        elsif @case_array[2][0].value_case ==2
+        elsif @case_array[2][2].value_case ==2
           return 2
         end
       end
@@ -96,10 +99,11 @@ class Board
 
 
   def is_over?
-    return true if @turn_count == 10 
+    return true if @turn_count == 9 || !victory?.nil?
     return false
   end 
 
-end
+
+
 end 
 
